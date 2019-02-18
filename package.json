@@ -1,0 +1,22 @@
+{
+  "name": "common-lib",
+  "version": "1.0.0",
+  "description": "- jsonTrans json按规则转换重写",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start_jt": "node ./jsonTrans/test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xiaowao/common-lib.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xiaowao/common-lib/issues"
+  },
+  "homepage": "https://github.com/xiaowao/common-lib#readme"
+}
