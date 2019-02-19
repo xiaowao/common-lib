@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .test {
+      width: 5rem;
+      height: 2rem;
+      font-size: 16px;
+      text-align: center;
+      border: 1px solid #000;
+    }
+    /* polyfill 字体放大缩小特性：视口放大无变化，视口缩小跟随缩小 */
+    [data-dpr="2"] .test {
+      font-size: 32px;
+    }
+    [data-dpr="3"] .test {
+      font-size: 48px;
+    }
+  </style>
+</head>
+<body>
+  <div class="test">width为屏幕/2</div>
+  <script src="flexable-viewport-scale.js"></script>
+  <script src="flexable-rem.js"></script>
+</body>
+</html>
