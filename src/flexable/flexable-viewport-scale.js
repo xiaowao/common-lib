@@ -1,7 +1,7 @@
 ((window) => {
   var doc = window.document
   var docEl = doc.documentElement
-  var meta = doc.querySelector('meta')
+  var meta = doc.createElement('meta')
   var dpr = 1
   var scale = 0
 

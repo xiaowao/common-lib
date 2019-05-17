@@ -4,6 +4,6 @@
     var deviceWidth  = document.documentElement.clientWidth
     document.documentElement.style.fontSize = (deviceWidth / 10) +'px'
   }
-  resize();
+  resize()
   window.onresize = resize
 })(window)

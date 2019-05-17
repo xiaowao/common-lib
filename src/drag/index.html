@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="index.css">
+  <script src="drag.js"></script>
+</head>
+<body>
+  <header>
+    <h3>秦时明月</h3>
+  </header>
+  <div class="pool">
+    <header>
+      <h4>分类池</h4>
+    </header>
+    <div class="pool_container">
+      <div class="pool_sub">
+        <header class="pool_sub_name"><span>墨家</span></header>
+        <div class="pool_sub_container" data-role="0"  id="pool_classify"></div>
+      </div>
+      <div class="pool_sub">
+        <header class="pool_sub_name"><span>儒家</span></header>
+        <div class="pool_sub_container" data-role="1"></div>
+      </div>
+      <div class="pool_sub">
+        <header class="pool_sub_name"><span>阴阳家</span></header>
+        <div class="pool_sub_container" data-role="2"></div>
+      </div>
+      <div class="pool_sub">
+        <header class="pool_sub_name"><span>鬼谷</span></header>
+        <div class="pool_sub_container" data-role="3"></div>
+      </div>
+    </div>
+  </div>
+  <div class="pool">
+    <header>
+      <h4>待定池</h4>
+    </header>
+    <div class="pool_container" id="pool_wait">
+      <div class="drags">
+        <div class="drags_img"></div>
+        <!-- <img class="drags_img" src="../asset/drag/bfeng.jpg" alt=""> -->
+      </div>
+      <div class="drags">
+        <div class="drags_img"></div>
+        <!-- <img class="drags_img" src="../asset/drag/clian.jpg" alt=""> -->
+      </div>
+      <div class="drags">
+        <div class="drags_img"></div>
+        <!-- <img class="drags_img" src="../asset/drag/gjli.jpg" alt=""> -->
+      </div>
+      <div class="drags">
+        <div class="drags_img"></div>
+        <!-- <img class="drags_img" src="../asset/drag/qming.jpg" alt=""> -->
+      </div>
+      <div class="drags">
+        <div class="drags_img"></div>
+        <!-- <div class="drags_img" src="../asset/drag/ssling.jpg" alt=""> -->
+      </div>
+      <div class="drags">
+        <div class="drags_img"></div>
+        <!-- <img class="drags_img" src="../asset/drag/wzhuang.jpg" alt=""> -->
+      </div>
+      <div class="drags">
+        <div class="drags_img"></div>
+        <!-- <div class="drags_img" src="../asset/drag/xnv.jpg" alt=""> -->
+      </div>
+      <div class="drags">
+        <div class="drags_img"></div>
+        <!-- <img class="drags_img" src="../asset/drag/xyun.jpg" alt=""> -->
+      </div>
+      <div class="drags">
+        <div class="drags_img"></div>
+        <!-- <img class="drags_img" src="../asset/drag/zliang.jpg" alt=""> -->
+      </div>
+    </div>
+  </div>
+  <script>
+    var list = [
+      {roleId: 3, path: 'bfeng.jpg'},
+      {roleId: 3, path: 'clian.jpg'},
+      {roleId: 0, path: 'gjli.jpg'},
+      {roleId: 0, path: 'qming.jpg'},
+      {roleId: 2, path: 'ssling.jpg'},
+      {roleId: 3, path: 'wzhuang.jpg'},
+      {roleId: 0, path: 'xnv.jpg'},
+      {roleId: 2, path: 'xyun.jpg'},
+      {roleId: 1, path: 'zliang.jpg'}
+    ]
+    var query = 'div[class=drags_img]'
+    var elms = document.querySelectorAll(query)
+    if (elms) {
+      let basePath = '../asset/drag/'
+      for(let i = 0; i < elms.length; i++) {
+        elms[i].style.backgroundImage = `url('${basePath}${list[i].path}')`
+        elms[i].dataset.from = 'poolWait'
+      }
+    }
+    init('div[class=drags_img]')
+  </script>
+</body>
+</html>

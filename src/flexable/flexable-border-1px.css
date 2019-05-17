@@ -2,9 +2,7 @@
 .border-1px, .border-top-1px, .border-right-1px, .border-bottom-1px, .border-left-1px {
   border: 1px solid #000;
 }
-.border-1px {
-  border: 1px solid #000;
-}
+
 @media (-webkit-min-device-pixel-ratio:2), (min-device-pixel-ratio:2) {
   .border-1px, .border-top-1px, .border-right-1px, .border-bottom-1px, .border-left-1px{
     position: relative;
