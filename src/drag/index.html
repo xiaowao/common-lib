@@ -12,6 +12,10 @@
   <header>
     <h3>秦时明月</h3>
   </header>
+  <div class="verify">
+    <div class="verify_btn" id="verify_btn">提交!</div>
+    <div class="verify_progress" id="verify_progress"></div>
+  </div>
   <div class="pool">
     <header>
       <h4>分类池</h4>
@@ -80,15 +84,15 @@
   </div>
   <script>
     var list = [
-      {roleId: 3, path: 'bfeng.jpg'},
-      {roleId: 3, path: 'clian.jpg'},
-      {roleId: 0, path: 'gjli.jpg'},
-      {roleId: 0, path: 'qming.jpg'},
-      {roleId: 2, path: 'ssling.jpg'},
-      {roleId: 3, path: 'wzhuang.jpg'},
-      {roleId: 0, path: 'xnv.jpg'},
-      {roleId: 2, path: 'xyun.jpg'},
-      {roleId: 1, path: 'zliang.jpg'}
+      {idx: 0, roleId: 3, path: 'bfeng.jpg'},
+      {idx: 1, roleId: 3, path: 'clian.jpg'},
+      {idx: 2, roleId: 0, path: 'gjli.jpg'},
+      {idx: 3, roleId: 0, path: 'qming.jpg'},
+      {idx: 4, roleId: 2, path: 'ssling.jpg'},
+      {idx: 5, roleId: 3, path: 'wzhuang.jpg'},
+      {idx: 6, roleId: 0, path: 'xnv.jpg'},
+      {idx: 7, roleId: 2, path: 'xyun.jpg'},
+      {idx: 8, roleId: 1, path: 'zliang.jpg'}
     ]
     var query = 'div[class=drags_img]'
     var elms = document.querySelectorAll(query)
@@ -97,9 +101,56 @@
       for(let i = 0; i < elms.length; i++) {
         elms[i].style.backgroundImage = `url('${basePath}${list[i].path}')`
         elms[i].dataset.from = 'poolWait'
+        elms[i].dataset.id = list[i].idx
       }
     }
+
+    // 加载拖拽程序
+
     init('pool_wait', 'div[class=drags_img]')
+
+    // 加载校验程序
+
+    let verifyBtn = document.getElementById('verify_btn')
+    verifyBtn.onclick = () => {
+      let count = 0
+      let mistake = 0
+      let classifyPools = document.getElementsByClassName('pool_classify')
+      if (!classifyPools || !classifyPools.length) {
+        return
+      }
+      let waitPools = document.getElementById('pool_wait')
+      if (waitPools) {
+        let drags = waitPools.getElementsByClassName('drags')
+        if (drags && drags.length) {
+          document.getElementById('verify_progress').innerHTML = '尚未完成分类,无法提交哦'
+          return
+        }
+      }
+      for (let i = 0; i < classifyPools.length; i++) {
+        let role = parseInt(classifyPools[i].dataset.role)
+        let child = classifyPools[i].children
+        if (!child || !child.length) {
+          continue
+        }
+        count += child.length
+        for (let j = 0; j < child.length; j++) {
+          let elm = child[j].children[0]
+          if (elm) {
+            let id = parseInt(elm.dataset.id)
+            let listId = list.map(item => item.idx)
+            let pos = listId.indexOf(id)
+            if (pos !== -1 && list[pos].roleId !== role) {
+              mistake++
+            }
+          }
+        }
+      }
+      if (mistake) {
+        document.getElementById('verify_progress').innerHTML = `Total ${count} / error ! ${mistake}`
+      }
+      console.log(count, mistake)
+    }
   </script>
 </body>
 </html>
