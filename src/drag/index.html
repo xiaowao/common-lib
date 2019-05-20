@@ -147,9 +147,11 @@
         }
       }
       if (mistake) {
-        document.getElementById('verify_progress').innerHTML = `Total ${count} / error ! ${mistake}`
+        let score = (count - mistake) / count * 100
+        document.getElementById('verify_progress').innerHTML = `Total ${count} / error ! ${score.toFixed(2)}%`
+      } else {
+        document.getElementById('verify_progress').innerHTML = 'Success!'
       }
-      console.log(count, mistake)
     }
   </script>
 </body>
